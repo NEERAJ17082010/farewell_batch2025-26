@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch of 2025-26</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+    
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="0" title="Landing"></div>
+        <div class="nav-dot" data-section="1" title="Future Plans"></div>
+    </div>
+
+    <!-- Landing Page: Name Entry -->
+    <div id="landing-page" class="page active">
+        <div class="landing-container">
+            <h1 class="title">Batch of 2025-26</h1>
+            <p class="subtitle">A Farewell Tribute</p>
+            <div class="name-input-container">
+                <input type="text" id="name-input" placeholder="Enter your name" autocomplete="off">
+                <button id="search-btn" class="btn">Find Profile</button>
+            </div>
+            <p id="not-found-msg" class="hidden">Profile not found. Would you like to create one?</p>
+            <button id="create-profile-btn" class="btn hidden">Create Profile</button>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('future-page').scrollIntoView({behavior: 'smooth'})">
+            <span>SCROLL</span>
+            <div class="arrow"></div>
+        </div>
+    </div>
+
+    <!-- Profile Creation Modal -->
+    <div id="create-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Create Your Profile</h2>
+            <div class="form-group">
+                <label for="new-name">Your Name:</label>
+                <input type="text" id="new-name" placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label for="new-password">Create Password:</label>
+                <input type="password" id="new-password" placeholder="Create a unique password">
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password">
+            </div>
+            <div class="modal-buttons">
+                <button id="cancel-create" class="btn btn-secondary">Cancel</button>
+                <button id="save-profile" class="btn">Save Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Selection Page -->
+    <div id="profile-page" class="page hidden">
+        <div class="profile-container">
+            <h2 class="welcome-text">Welcome, <span id="profile-name"></span></h2>
+            <div class="profile-card" id="profile-card">
+                <div class="photo-frame">
+                    <img id="current-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect fill='%23333' width='200' height='200'/%3E%3Ctext fill='%23fff' font-family='Arial' font-size='14' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3EYour Photo%3C/text%3E%3C/svg%3E" alt="Current Photo">
+                </div>
+                <p class="profile-label">Class of 2025-26</p>
+            </div>
+            <div class="password-section">
+                <input type="password" id="profile-password" placeholder="Enter your password">
+                <button id="unlock-btn" class="btn">Unlock Memory</button>
+                <p id="wrong-password" class="error-msg hidden">Wrong password. Try again!</p>
+            </div>
+            <button id="back-to-landing" class="btn btn-secondary">← Back</button>
+        </div>
+    </div>
+
+    <!-- Memory Page: Childhood to Current Transition -->
+    <div id="memory-page" class="page hidden">
+        <div class="memory-container">
+            <h2 class="memory-title">Your Journey</h2>
+            
+            <!-- Photo Comparison Slider -->
+            <div class="photo-comparison">
+                <div class="photo-side childhood-side">
+                    <img id="childhood-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect fill='%23222' width='300' height='300'/%3E%3Ctext fill='%23fff' font-family='Arial' font-size='16' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3EChildhood Photo%3C/text%3E%3C/svg%3E" alt="Childhood">
+                    <span class="photo-label">Then</span>
+                </div>
+                <div class="photo-side current-side">
+                    <img id="memory-current-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect fill='%23333' width='300' height='300'/%3E%3Ctext fill='%23fff' font-family='Arial' font-size='16' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3ECurrent Photo%3C/text%3E%3C/svg%3E" alt="Current">
+                    <span class="photo-label">Now</span>
+                </div>
+                <div class="slider-handle">
+                    <div class="slider-line"></div>
+                    <div class="slider-circle">↔</div>
+                </div>
+            </div>
+
+            <!-- Personal Note -->
+            <div class="note-container">
+                <h3>A Note for You</h3>
+                <div class="note-content" id="personal-note">
+                    <p>Dear <span id="note-name"></span>,</p>
+                    <p class="placeholder-note">Your personal note will appear here.</p>
+                </div>
+            </div>
+
+            <!-- Pre-written Notes (Hidden - loaded from HTML) -->
+            <div id="html-notes" style="display: none;">
+                <div data-note-for="Bhanushree">Bhanushree, your presence made every moment brighter. Your infectious smile and positive attitude lifted the spirits of everyone around you. The way you handled challenges though u were hurt inside (or probably happy). Ik we did tease you with Harshith, but as per research we tease only those who are close.Ik we crossed our limits sometimes and im really sorry about it.Pls do not forget me and also dont forget to call me for marriage.Im sorry for every mistake like teasing you even when u didnt wanted to be.Also as a brother I would say tht the personality u have (which is never showing others if ur hurt or not) tht might cause trouble.So be YOURSELF.Wishing you endless success and happiness in everything you do.</div>
+
+
+                <div data-note-for="Chiranth">Chiranth, Thank you for all the support, laugheter and endless fun we had.Remeber the tubelight in 8th grade?? and the fan wings? I can never forget you and your anger issues(though I have it too).Also the post-exam answer checking we had during the boards can't be removed from my mind.At the end I would like to say Thank You for being my friend</div>
+                <div data-note-for="Harshith">Harshith, remember how we met first? isnt it amazing tht we became friends from such silly thing. Ik i had fights with u for no reason and also u acted as a mediator when I and Sam fought. Also the "parallel parallel" thing can never be forgeted.</div>
+                
+                
+                <div data-note-for="Kanchana">Kanchana, your kindness and compassion touched the hearts of everyone you met. You have an extraordinary ability to make people feel comfortable and at ease. Your gentle spirit and thoughtful nature made you a trusted friend to many. The support you offered, whether through words or actions, never went unnoticed. As you step into this new phase of life, carry forward your beautiful qualities. You deserve all the happiness and success that 
+                comes your way. Thank you for being such a wonderful person.</div>
+               
+               
+                <div data-note-for="Lalith">Lalith, your intelligence and creativity set you apart. You approached problems with innovative solutions and always encouraged others to think differently. Your determination and perseverance through challenges inspired those around you. Beyond academics, your friendship and loyalty meant the world to many. You have a bright mind and an even brighter future ahead. As you pursue your dreams, remember that you have the capability to achieve anything you set your mind to. Wishing you a journey filled with accomplishments and joy.</div>
+               
+               
+                <div data-note-for="Manyatha">Manya (my bestie and homie). We had a good time. I trust to a great extent so much tht i even said u my secrets like on whom i had crush. I hope you never forget me. I dont know what to say but thankyou for coming in my life. and also im really sry if i hurt you. The support you provided to friends and peers showed your generous heart. As you move towards your future, may it be as bright and beautiful as your personality. Keep spreading that warmth and positivity wherever life takes you. You are one of a kind!</div>
+               
+               
+                <div data-note-for="Vibha">Vibha, One of the most (btw only 3 were there) i have met in my life. You were the one who supported me almost everytime. You were the one of the 2 people whom i trusted the most (i do trust now too). We did tease you but our intension behind it was never to hurt you instead we just how tht u matter by teasing. Ik you feel hurt so even im not teasing from when u said u do feel hurt. You are the only real non-blood sis i have and whom i can say all the things. Hope we never loose contact even when we go apart. Wish you a happy and successfully life ahead. Thank you and also sorry for everything, every single movement we spent together and every single mistake i did tht made you hurt. </div>
+               
+                <div data-note-for="Shalini">Shalini, remember how close we were when u first came to school in 2nd std. Also the 6th std when u ,me ,keerthan , and brinda used to sit together make jokes while eating and drinking water. But suddenly in 7th we stopped talking bcs of ur class teacher. Ik both wanted to talk with each other but SILENCE made it more worse. But ya still in the ending we started talking bcs of vibha and rutvij. And when we did it never felt like we had stopped talking. Hope you have a succesfull and happy life ahead. Also sorry for few mistaked I did(idk if u remember or not but i do remember them cleanly)  </div>
+               
+               
+                <div data-note-for="Keerthan">Keerthan,my only male best friend whom i knew from grade 1. Ik we wont talk now but tht doesnt mean i forgot you. I still dont know why we stopped talking. Just say tht mistake and ill try to rectify it. i dont want to loose any of best friends. I believed tht you will stay with me after 10th std too but u stopped talking with me in start of 10th only just bcs u heard some rumours or the overexaggerated talks of those new ppl. I never imagined tht you would end our friendship just for the sake of some random guys. Sorry for every single mistake i did  </div>
+               
+               
+                <div data-note-for="Mithun">Mithun, your friendship was a gift that many treasured. You stood by your friends through thick and thin, showing true loyalty. Your humor and light-heartedness made even stressful times bearable. You have a big heart and a generous spirit that made you beloved by all. The memories we created together will be remembered fondly. As you embark on new adventures, may you find success in all your pursuits. Keep that wonderful spirit alive and continue touching lives with your kindness.</div>
+               
+               
+                <div data-note-for="Krutika">Krutika, I mean miss EGO (dont take it seriously) we were friends before 9th also but we came close in 9th. Ik we had silly and meaningless fights and stayed without talking for multiple days but just a single eye contact would end the fight. It is also true tht we fight with ppl who matter. To be true u actually look beautiful when ur angry i mean ur face i can never forget it. Sometimes u act childish which is actually good. remember tht yogeshwaran targetting our 2 bench for no reason?? I just dont know what to say but thank you for bcming my friend. Hope you never forget me and also dont forget to call me to your marriage</div>
+               
+               
+                <div data-note-for="Sonika">Sonika, your warmth and affection made everyone feel like family. You have an amazing ability to connect with people on a deep level. Your kindness and generosity knew no bounds. The way you cared for your friends was truly heartwarming. As we part ways, remember that you made a lasting impact on everyone who knew you. Your future is incredibly bright, and I have no doubt you will achieve great things. May happiness and success follow you everywhere you go. You are truly special!</div>
+               
+               
+                <div data-note-for="Unnathi">Unnathi, your cheerful disposition brightened every room you entered. You brought positivity and hope to those around you. Your ability to find joy in simple things was truly admirable. The laughter and fun we shared created wonderful memories. You have a beautiful heart and an infectious laugh. As you step into the future, may it be filled with countless reasons to smile. Keep that positive energy flowing and continue being the amazing person you are. Wishing you nothing but happiness and success!</div>
+               
+               
+                <div data-note-for="Samrudh">Samrudh, your leadership qualities and responsible nature made you someone others looked up to. You led by example and inspired those around you to be better. Your thoughtful decisions and wise counsel helped many navigate challenges. Your friendship was valued and your presence will be missed. The experiences we shared and lessons we learned together will stay with us forever. As you move forward, may your leadership open doors to incredible opportunities. May success and happiness be your constant companions on this new journey.</div>
+               
+               
+                <div data-note-for="Rutvij">Rutvij, your sharp mind and quick wit made every interaction memorable. You brought unique perspectives and insights to discussions. Your ability to make people laugh while making valid points was a rare talent. Despite your many qualities, you remained humble and grounded. The time we spent together, whether studying or just hanging out, was always enjoyable. As you begin this new chapter, may your intelligence and charm take you far. Wishing you a future filled with achievements and contentment. Keep being yourself!</div>
+               
+               
+                <div data-note-for="Shreyas">Shreyas, we were in the same class for many years but in 8th grade u went to M-batch. I miss those days when You guys would yeat the "pattu". We did ask you to bring the friend rice but you didn. Not much to say now but hope you bcm succesfull</div>
+               
+               
+                <div data-note-for="Bhumika">Bhumika, In the first place I would say sry for believing wht Harshith said about you and stopped talking with you. But later ig in 10th we started talking again. I just couldn't believe tht u said many personal things like .... (don't wanna use it here). But ya Thank you. Also i sincerely hope you achieve all your goals. Whatever happens don't forget me and and also don't forget to call me for your wedding.</div>
+            </div>
+
+            <!-- Photo Upload Section (for adding real photos later) -->
+            <div class="upload-section">
+                <h3>Add Your Photos</h3>
+                <p class="upload-note">You can replace these placeholder images with your real photos</p>
+                <div class="upload-buttons">
+                    <label class="upload-btn">
+                        Upload Childhood Photo
+                        <input type="file" id="upload-childhood" accept="image/*" class="hidden">
+                    </label>
+                    <label class="upload-btn">
+                        Upload Current Photo
+                        <input type="file" id="upload-current" accept="image/*" class="hidden">
+                    </label>
+                </div>
+            </div>
+
+            <button id="back-to-profile" class="btn btn-secondary">← Back to Profile</button>
+            <button id="view-thankyou" class="btn">View Thank You</button>
+        </div>
+    </div>
+
+    <!-- Thank You Page -->
+    <div id="thankyou-page" class="page hidden">
+        <div class="thankyou-container">
+            <h1 class="thankyou-text">THANK YOU</h1>
+            <p class="thankyou-subtitle">For being part of Batch of 2025-26</p>
+            <div class="thankyou-buttons">
+                <button id="thankyou-back" class="btn btn-secondary">View Again</button>
+                <button id="view-future" class="btn">Where Are We Going Next?</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Where Are We Going Next Page -->
+    <div id="future-page" class="page hidden">
+        <div class="future-container">
+            <h2 class="future-title">Where Are We Going Next?</h2>
+            <p class="future-subtitle">Share your future aspirations</p>
+            
+            <div class="future-form">
+                <div class="form-group">
+                    <label for="future-name">Your Name:</label>
+                    <input type="text" id="future-name" placeholder="Enter your name" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="future-career">What's your dream career?</label>
+                    <input type="text" id="future-career" placeholder="e.g. Doctor, Engineer, Artist..." autocomplete="off">
+                </div>
+                <button id="save-future-btn" class="btn">Save My Future</button>
+                <p id="future-saved-msg" class="success-msg hidden">Saved successfully!</p>
+            </div>
+
+            <div class="future-entries">
+                <h3>Future Plans of Our Batch</h3>
+                <div id="future-list" class="future-list">
+                    <!-- Entries will be displayed here -->
+                </div>
+            </div>
+
+            <button id="future-back" class="btn btn-secondary">← Back to Thank You</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3 class="footer-title">Batch of 2025-26</h3>
+                <p class="footer-tagline">A Farewell Tribute</p>
+            </div>
+            <div class="footer-social">
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 NEERAJ S MAHENDRAKAR <span class="footer-separator">•</span> All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
